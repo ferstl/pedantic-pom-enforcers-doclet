@@ -123,11 +123,6 @@ class MarkdownExtensions {
     (reader.readLines => [remove('')]).join(' ', [s | s.trim])
   }
   
-  def static println(Writer writer) {
-    writer.write(LINE_SEPARATOR)
-    writer
-  }
-  
   def static println(Writer writer, String text) {
     writer.write(text + LINE_SEPARATOR)
     writer
