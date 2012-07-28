@@ -19,6 +19,9 @@ class MarkdownExtensions {
   static val HTML_TAG_REPLACEMENTS = newHashMap(
     new Pair('code', '`'), new Pair('em', '*'), new Pair('strong', '**'), new Pair('pre', '')
   )
+  static val HTML_ENTITY_REPLACEMENTS = newHashMap(
+    new Pair('&lt;', '<'), new Pair('&gt;', '>'), new Pair('&amp;', '&'), new Pair('&quot;', '"')
+  )
   
   
   def static processText(String text, (String)=>String... processFunctions) {
@@ -95,6 +98,14 @@ class MarkdownExtensions {
     result
   }
   
+  def static processHtmlEntities(String text) {
+    var result = text
+    for (entry : HTML_ENTITY_REPLACEMENTS.entrySet) {
+      result = result.replaceAll(entry.key, entry.value)
+    }
+    result
+  }
+  
   def static processLeadingWhitespace(String text) {
     val reader = new StringReader(text)
     val lines = reader.readLines
@@ -113,6 +124,7 @@ class MarkdownExtensions {
       [processExternalMemberLink(it, classnames)],
       [processInternalMemberLink(it)],
       [processHtmlTags(it)],
+      [processHtmlEntities(it)],
       [processLeadingWhitespace(it)]
     )
   }
