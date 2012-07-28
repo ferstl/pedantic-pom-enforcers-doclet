@@ -5,6 +5,14 @@
   <groupId>com.github.ferstl</groupId>
   <artifactId>pedantic-pom-enforcers-doclet</artifactId>
   <version>1.0.0-SNAPSHOT</version>
+  <url>https://github.com/ferstl/pedantic-pom-enforcers-doclet</url>
+  
+  <scm>
+    <connection>scm:git:git@github.com:ferstl/pedantic-pom-enforcers-doclet.git</connection>
+    <developerConnection>scm:git:git@github.com:ferstl/pedantic-pom-enforcers-doclet.git</developerConnection>
+    <url>${project.url}</url>
+    <tag>HEAD</tag>
+  </scm>
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
