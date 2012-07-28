@@ -49,8 +49,7 @@ class MarkdownExtensions {
         membername = membername.uncapitalize
       }
       if (classnames.contains(classname)) {
-//        matcher.appendReplacement(sb, '''[«classname».«membername»](«classname»)''')
-        matcher.appendReplacement(sb, '''[«membername»](«classname»)''')
+        matcher.appendReplacement(sb, '''[«classname».«membername»](«classname»)''')
       } else {
         matcher.appendReplacement(sb, '''`«classname».«membername»`''')
       }
