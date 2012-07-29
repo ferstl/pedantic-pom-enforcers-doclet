@@ -63,3 +63,7 @@ The POM file of the *Pedantic POM Enforcers* does already contain this configura
 Maven profile called `generate-wiki`. Running `mvn -Pgenerate-wiki javadoc:javadoc` will create the
 Wiki in a directory called `pedantic-pom-enforcers.wiki`, which is also the name of the GIT
 repository that contains the Wiki pages.
+
+### Links
+- http://docs.oracle.com/javase/7/docs/technotes/guides/javadoc/doclet/overview.html
+- http://xtend-lang.org/
