@@ -6,7 +6,6 @@ import java.util.List
 import java.util.regex.Pattern
 import org.eclipse.xtext.xbase.lib.Pair
 
-import static extension com.github.ferstl.doclet.MarkdownExtensions.*
 import static extension org.apache.commons.io.IOUtils.*
 import static extension org.apache.commons.lang3.StringUtils.*
 
