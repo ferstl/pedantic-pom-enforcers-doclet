@@ -92,8 +92,8 @@ class OverviewWriter extends AbstractMarkdownWriter {
   
   override protected writeDoc(Writer writer, ClassDoc clazz) {
     writer => [
-      println(clazz.commentText.toMarkdown(classnames))
-      println('')
+      writer.println(clazz.commentText.toMarkdown(classnames))
+      writer.println('')
       printTableHeader("Enforcer", "ID", "Description")
       // The CompoundPedanticEnforcer does not have an ID. So we have to hardcode the table entry
       printTableLine(
@@ -102,11 +102,13 @@ class OverviewWriter extends AbstractMarkdownWriter {
     ]
     
     clazz.fields.forEach[
-      val refClass = seeTags.head.referencedClass
-      val refType = refClass.simpleTypeName
-      val description = refClass.firstSentenceTags.head.text
-      
-      writer.printTableLine('''[«refType»](«refType»)''', name, description.toSingleLineMarkdown(classnames))
+      if (seeTags.head != null) {
+          val refClass = seeTags.head.referencedClass
+          val refType = refClass.simpleTypeName
+          val description = refClass.firstSentenceTags.head.text
+          
+          writer.printTableLine('''[«refType»](«refType»)''', name, description.toSingleLineMarkdown(classnames))
+      }
     ]
   }
 }
@@ -130,11 +132,11 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
     ]
     
     writer => [
-      println('''#### ID: «enforcerId.processExternalMemberLink(classnames)»''')
-      println(clazz.commentText.toMarkdown(classnames))
-      println('')
-      println('### Configuration Options')
-      println('')
+      writer.println('''#### ID: «enforcerId.processExternalMemberLink(classnames)»''')
+      writer.println(clazz.commentText.toMarkdown(classnames))
+      writer.println('')
+      writer.println('### Configuration Options')
+      writer.println('')
       printTableHeader('Option', 'Default', 'Description')
       configPrameters.forEach[
         writer.printTableLine(
@@ -142,7 +144,7 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
             defaultValue.toSingleLineMarkdown(classnames),
             description.toSingleLineMarkdown(classnames))
       ]
-      println('')
+      writer.println('')
     ]
   }
   
