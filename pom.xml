@@ -3,7 +3,7 @@
   
   <groupId>com.github.ferstl</groupId>
   <artifactId>pedantic-pom-enforcers-doclet</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
   <url>https://github.com/ferstl/pedantic-pom-enforcers-doclet</url>
   
   <scm>
