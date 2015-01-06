@@ -134,7 +134,7 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
     
     writer => [
       writer.println('''#### ID: «enforcerId.processExternalMemberLink(classnames)»''')
-      writer.println('''«since.since»''')
+      writer.println('''«since.sinceString»''')
       writer.println('')
       writer.println(clazz.commentText.toMarkdown(classnames))
       writer.println('')
@@ -145,7 +145,7 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
         writer.printTableLine(
             '''`«name»`''',
             defaultValue.toSingleLineMarkdown(classnames),
-            '''«description.toSingleLineMarkdown(classnames)» «since.since»''')
+            '''«description.toSingleLineMarkdown(classnames)» «it.since.sinceString»''')
       ]
       writer.println('')
     ]

@@ -134,7 +134,7 @@ class MarkdownExtensions {
     (reader.readLines => [remove('')]).join(' ', [s | s.trim])
   }
   
-  def static since(String since) {
+  def static sinceString(String since) {
     '''Since: «since»'''
   }
   
