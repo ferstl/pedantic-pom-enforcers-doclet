@@ -11,7 +11,7 @@ import java.nio.charset.Charset
 import java.nio.file.Path
 import java.util.ArrayList
 import java.util.List
-import org.eclipse.xtend.lib.Data
+import org.eclipse.xtend.lib.annotations.Data
 
 import static extension java.nio.file.Files.*
 import static extension org.apache.commons.lang3.StringUtils.*
@@ -120,6 +120,7 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
 
   override protected writeDoc(Writer writer, ClassDoc clazz) {
     val enforcerId = clazz.tags.findFirst['@id' == name].text.defaultIfBlank('N/A')
+    val since = clazz.tags.findFirst['@since' == name].text.defaultIfBlank('');
     
     // Collect all configuration parameters
     val List<ConfigurationParameter> configPrameters = newArrayList
@@ -133,6 +134,8 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
     
     writer => [
       writer.println('''#### ID: «enforcerId.processExternalMemberLink(classnames)»''')
+      writer.println('''«since.since»''')
+      writer.println('')
       writer.println(clazz.commentText.toMarkdown(classnames))
       writer.println('')
       writer.println('### Configuration Options')
@@ -142,7 +145,7 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
         writer.printTableLine(
             '''`«name»`''',
             defaultValue.toSingleLineMarkdown(classnames),
-            description.toSingleLineMarkdown(classnames))
+            '''«description.toSingleLineMarkdown(classnames)» «since.since»''')
       ]
       writer.println('')
     ]
@@ -157,8 +160,9 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
           paramName = paramName.removeStart('set').uncapitalize
         }
         val defaultValue = tags.findFirst['@default' == name].extractText('n/a')
+        val since = tags.findFirst['@since' == name].text.defaultIfBlank('')
         val description = configTag.holder.commentText.toSingleLineMarkdown(classnames)
-        func.apply(new ConfigurationParameter(paramName, defaultValue, description))
+        func.apply(new ConfigurationParameter(paramName, defaultValue, description, since))
       }
     ]
   }
@@ -176,4 +180,5 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
   val String name
   val String defaultValue
   val String description
+  val String since
 }

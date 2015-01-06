@@ -15,7 +15,7 @@
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <xtend.version>2.4.0</xtend.version>
+    <xtend.version>2.7.3</xtend.version>
   </properties>
 
   <distributionManagement>
@@ -59,7 +59,7 @@
     <dependency>
       <groupId>com.sun</groupId>
       <artifactId>tools</artifactId>
-      <version>1.7</version>
+      <version>1.8</version>
       <scope>system</scope>
       <systemPath>${java.home}/../lib/tools.jar</systemPath>
     </dependency>
