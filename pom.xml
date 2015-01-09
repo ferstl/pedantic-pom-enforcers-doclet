@@ -3,14 +3,14 @@
   
   <groupId>com.github.ferstl</groupId>
   <artifactId>pedantic-pom-enforcers-doclet</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <version>1.0.4</version>
   <url>https://github.com/ferstl/pedantic-pom-enforcers-doclet</url>
   
   <scm>
     <connection>scm:git:git@github.com:ferstl/pedantic-pom-enforcers-doclet.git</connection>
     <developerConnection>scm:git:git@github.com:ferstl/pedantic-pom-enforcers-doclet.git</developerConnection>
     <url>${project.url}</url>
-    <tag>HEAD</tag>
+    <tag>pedantic-pom-enforcers-doclet-1.0.4</tag>
   </scm>
   
   <properties>
