@@ -119,8 +119,8 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
   }
 
   override protected writeDoc(Writer writer, ClassDoc clazz) {
-    val enforcerId = clazz.tags.findFirst['@id' == name].text.defaultIfBlank('N/A')
-    val since = clazz.tags.findFirst['@since' == name].text.defaultIfBlank('');
+    val enforcerId = clazz.tags.findFirst['@id' == name].extractText('N/A')
+    val since = clazz.tags.findFirst['@since' == name].extractText('');
     
     // Collect all configuration parameters
     val List<ConfigurationParameter> configPrameters = newArrayList
@@ -160,7 +160,7 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
           paramName = paramName.removeStart('set').uncapitalize
         }
         val defaultValue = tags.findFirst['@default' == name].extractText('n/a')
-        val since = tags.findFirst['@since' == name].text.defaultIfBlank('')
+        val since = tags.findFirst['@since' == name].extractText('')
         val description = configTag.holder.commentText.toSingleLineMarkdown(classnames)
         func.apply(new ConfigurationParameter(paramName, defaultValue, description, since))
       }

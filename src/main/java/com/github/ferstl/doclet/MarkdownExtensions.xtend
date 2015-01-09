@@ -135,7 +135,7 @@ class MarkdownExtensions {
   }
   
   def static sinceString(String since) {
-    '''Since: «since»'''
+    '''«IF !since.isNullOrEmpty»Since: «since»«ENDIF»'''
   }
   
   def static println(Writer writer, String text) {
