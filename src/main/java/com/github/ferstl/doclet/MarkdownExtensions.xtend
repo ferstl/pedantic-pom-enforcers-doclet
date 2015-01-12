@@ -4,7 +4,6 @@ import java.io.StringReader
 import java.io.Writer
 import java.util.List
 import java.util.regex.Pattern
-import org.eclipse.xtext.xbase.lib.Pair
 
 import static extension org.apache.commons.io.IOUtils.*
 import static extension org.apache.commons.lang3.StringUtils.*
@@ -15,12 +14,8 @@ class MarkdownExtensions {
   static val CLASS_LINK = Pattern::compile('\\{@link ([\\w_]+?)\\}');
   static val INTERNAL_MEMBER_LINK = Pattern::compile('\\{@link #(set)?([\\w_]+?)(\\(.*?\\))?\\}');
   
-  static val HTML_TAG_REPLACEMENTS = newHashMap(
-    new Pair('code', '`'), new Pair('em', '*'), new Pair('strong', '**'), new Pair('pre', '')
-  )
-  static val HTML_ENTITY_REPLACEMENTS = newHashMap(
-    new Pair('&lt;', '<'), new Pair('&gt;', '>'), new Pair('&amp;', '&'), new Pair('&quot;', '"')
-  )
+  static val HTML_TAG_REPLACEMENTS = #{'code' -> '`', 'em' -> '*', 'strong' -> '**', 'pre' -> ''}
+  static val HTML_ENTITY_REPLACEMENTS = #{'&lt;' -> '<', '&gt;' -> '>', '&amp;' -> '&', '&quot;' -> '"'}
   
   
   def static processText(String text, (String)=>String... processFunctions) {
