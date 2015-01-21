@@ -1,6 +1,5 @@
 package com.github.ferstl.doclet;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
@@ -16,22 +15,17 @@ import com.sun.javadoc.ClassDoc;
 public abstract class AbstractClassDocWriter {
 
   private final Charset encoding;
-  private final Path outputDirectory;
   private final ClassDoc clazz;
-  private final String filename;
+  private final Path targetFile;
 
-  public AbstractClassDocWriter(
-      Charset encoding, Path outputDirectory, String filename, ClassDoc clazz) {
+  public AbstractClassDocWriter(Charset encoding, Path outputDirectory, String filename, ClassDoc clazz) {
     this.encoding = encoding;
-    this.outputDirectory = outputDirectory;
+    this.targetFile = outputDirectory.resolve(filename);
     this.clazz = clazz;
-    this.filename = filename;
   }
 
   public final void write() throws IOException {
-    File target = new File(this.outputDirectory.toFile(), this.filename);
-
-    try (Writer writer = Files.newBufferedWriter(target.toPath(), this.encoding)) {
+    try (Writer writer = Files.newBufferedWriter(this.targetFile, this.encoding)) {
       writeDoc(writer, this.clazz);
     }
   }
