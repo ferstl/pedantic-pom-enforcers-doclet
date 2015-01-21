@@ -11,6 +11,7 @@ import com.sun.javadoc.ClassDoc;
 /**
  * Abstract implementation of a writer for {@link ClassDoc} elements. It is implemented in Java
  * because Xtend does not support &quot;try with resources&quot;.
+ * See {@link https://bugs.eclipse.org/bugs/show_bug.cgi?id=366020}.
  */
 public abstract class AbstractClassDocWriter {
 
