@@ -64,6 +64,12 @@ Maven profile called `generate-wiki`. Running `mvn -Pgenerate-wiki javadoc:javad
 Wiki in a directory called `pedantic-pom-enforcers.wiki`, which is also the name of the GIT
 repository that contains the Wiki pages.
 
+**Update 2020-08-25**:
+
+- The javadoc plugin configuration has problems with windows paths. `${project.basedir}` may need to be replaced by an absolute path
+- The doclet does currently only run with JDK8
+
+
 ### Links
 - http://docs.oracle.com/javase/7/docs/technotes/guides/javadoc/doclet/overview.html
 - http://xtend-lang.org/
