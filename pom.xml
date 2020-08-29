@@ -1,21 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
+
   <groupId>com.github.ferstl</groupId>
   <artifactId>pedantic-pom-enforcers-doclet</artifactId>
   <version>1.0.5-SNAPSHOT</version>
   <url>https://github.com/ferstl/pedantic-pom-enforcers-doclet</url>
-  
+
   <scm>
     <connection>scm:git:git@github.com:ferstl/pedantic-pom-enforcers-doclet.git</connection>
     <developerConnection>scm:git:git@github.com:ferstl/pedantic-pom-enforcers-doclet.git</developerConnection>
     <url>${project.url}</url>
     <tag>HEAD</tag>
   </scm>
-  
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <xtend.version>2.7.3</xtend.version>
+    <xtend.version>2.22.0</xtend.version>
   </properties>
 
   <distributionManagement>
@@ -33,7 +33,7 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>13.0.1</version>
+      <version>29.0-jre</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.xtend</groupId>
@@ -43,17 +43,17 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.1</version>
+      <version>2.7</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.1</version>
+      <version>3.11</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -87,7 +87,7 @@
               <goal>testCompile</goal>
             </goals>
             <configuration>
-              <!-- The Eclipse plugin is not able to generate the files into the target directory. 
+              <!-- The Eclipse plugin is not able to generate the files into the target directory.
                    Maven should generate the files into the same location. -->
               <outputDirectory>src/main/xtend-gen</outputDirectory>
               <testOutputDirectory>src/test/xtend-gen</testOutputDirectory>
