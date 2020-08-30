@@ -102,7 +102,7 @@ class OverviewWriter extends AbstractMarkdownWriter {
     ]
     
     clazz.fields.forEach[
-      if (seeTags.head != null) {
+      if (seeTags.head !== null) {
           val refClass = seeTags.head.referencedClass
           val refType = refClass.simpleTypeName
           val description = refClass.firstSentenceTags.head.text
@@ -154,7 +154,7 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
   def private extractConfigParameter(Doc[] docs, (ConfigurationParameter)=>Object func) {
      docs.forEach[
       val configTag = tags.findFirst['@configParam' == name]
-      if (configTag != null) {
+      if (configTag !== null) {
         var paramName = configTag.holder.name
         if (paramName.startsWith('set')) {
           paramName = paramName.removeStart('set').uncapitalize
@@ -168,7 +168,7 @@ class EnforcerRuleWriter extends AbstractMarkdownWriter {
   }
   
   def private extractText(Tag tag, String defaultVal) {
-    if (tag != null && !tag.text.blank) {
+    if (tag !== null && !tag.text.blank) {
       tag.text
     } else {
       defaultVal
